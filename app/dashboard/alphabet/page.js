@@ -1,29 +1,36 @@
 // app/kalams/page.js
 
+import axios from "axios";
+import CreateAlphabet from "./CreateAlphabet";
+
 const page = async () => {
-  // Fetch data directly in the component
-  const res = await fetch('https://razeillahi.vercel.app/api/alphabet', {
-    next: { revalidate: 10 },  // Optional: Cache control (revalidates every 10 seconds)
-  });
+  try {
+    // Make the API call using Axios
+    const res = await axios.get("https://razeillahi.vercel.app/api/alphabet", {
+      // Optional: You can configure Axios cache headers here (Next.js specific headers like revalidate aren't directly supported in Axios)
+    });
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    const alphabet = res.data;
+
+    return (
+      <div className="flex flex-col lg:flex-row items-center justify-center">
+        <div className="flex flex-1 flex-col items-center justify-center">
+          <h1>All alphabet</h1>
+          <ul>
+            {alphabet.data.map((_) => (
+              <li key={_.id}>
+                {_.letter} - {_.id}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-1"><CreateAlphabet /></div>
+      </div>
+    );
+  } catch (error) {
+    console.error("Failed to fetch data with Axios", error);
+    return <p>Failed to load data</p>;
   }
-
-  const kalams = await res.json();
-
-  return (
-    <div>
-      <h1>All alphabet</h1>
-      <ul>
-        {kalams.data.map(kalam => (
-          <li key={kalam.id}>
-            {kalam.letter}: {kalam.content} (Poet ID: {kalam.poet_id})
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 };
 
 export default page;

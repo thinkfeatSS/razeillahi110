@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className='flex gap-10'>
+    <nav className='flex items-center justify-center gap-10 w-screen'>
       <Link href="/dashboard/kalam">kalam</Link>
       <Link href="/dashboard/alphabet">alphabet</Link>
       <Link href="/dashboard/poem">poem</Link>

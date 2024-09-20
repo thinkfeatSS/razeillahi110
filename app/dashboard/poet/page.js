@@ -2,15 +2,13 @@
 
 const KalamList = async () => {
   // Fetch data directly in the component
-  const res = await fetch('https://razeillahi.vercel.app/api/poets', {
-    next: { revalidate: 10 },  // Optional: Cache control (revalidates every 10 seconds)
-  });
+  const res = await fetch('https://razeillahi.vercel.app/api/poets');
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
-
   const kalams = await res.json();
+  console.log(kalams);
 
   return (
     <div>
@@ -18,7 +16,7 @@ const KalamList = async () => {
       <ul>
         {kalams.data.map(kalam => (
           <li key={kalam.id}>
-            {kalam.letter}: {kalam.content} (Poet ID: {kalam.poet_id})
+            {kalam.name} ID: {kalam.id}
           </li>
         ))}
       </ul>

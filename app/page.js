@@ -1,7 +1,5 @@
 // app/kalams/page.js
 
-import Navbar from "@/components/Navbar";
-import Link from "next/link";
 
 const page = async () => {
   // Fetch data directly in the component
@@ -17,7 +15,6 @@ const page = async () => {
 
   return (
     <div>
-      <Navbar />
       <h1>All Kalams</h1>
       <ul>
         {kalams.data.map(kalam => (
