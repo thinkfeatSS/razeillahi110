@@ -4,10 +4,10 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <nav className='flex gap-10'>
-      <Link href="/kalam">kalam</Link>
-      <Link href="/alphabet">alphabet</Link>
-      <Link href="/poem">poem</Link>
-      <Link href="/poet">poet</Link>
+      <Link href="/dashboard/kalam">kalam</Link>
+      <Link href="/dashboard/alphabet">alphabet</Link>
+      <Link href="/dashboard/poem">poem</Link>
+      <Link href="/dashboard/poet">poet</Link>
     </nav>
   )
 }
