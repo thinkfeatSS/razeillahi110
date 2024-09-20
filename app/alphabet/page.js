@@ -2,7 +2,7 @@
 
 const page = async () => {
   // Fetch data directly in the component
-  const res = await fetch('https://razeillahi.vercel.app/api/kalam', {
+  const res = await fetch('https://razeillahi.vercel.app/api/alphabet', {
     next: { revalidate: 10 },  // Optional: Cache control (revalidates every 10 seconds)
   });
 
@@ -14,7 +14,7 @@ const page = async () => {
 
   return (
     <div>
-      <h1>All Kalams</h1>
+      <h1>All alphabet</h1>
       <ul>
         {kalams.data.map(kalam => (
           <li key={kalam.id}>
